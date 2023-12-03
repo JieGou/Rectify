@@ -3,62 +3,61 @@ using System.Collections.Generic;
 
 namespace RectifyUtils
 {
-	internal class RectifyLogger
-	{
+    internal class RectifyLogger
+    {
+        private static List<string> StringLog { get; set; } = new List<string>();
 
-		static List<string> StringLog { get; set; } = new List<string>();
+        internal static string OutputShape(RectShape rectShape)
+        {
+            string pointPerim = "RECTSHAPE:";
+            foreach (RectEdge perimEdge in rectShape.Perimeter)
+            {
+                pointPerim += perimEdge.FirstPosition.xPos + "," + perimEdge.FirstPosition.yPos + "|";
+            }
 
-		internal static string OutputShape(RectShape rectShape)
-		{
-			string pointPerim = "RECTSHAPE:";
-			foreach (RectEdge perimEdge in rectShape.Perimeter)
-			{
-				pointPerim += perimEdge.FirstPosition.xPos + "," + perimEdge.FirstPosition.yPos + "|";
-			}
+            return pointPerim;
+        }
 
-			return pointPerim;
-		}
-
-		internal static void RecordShape(RectShape rectShape)
-		{
+        internal static void RecordShape(RectShape rectShape)
+        {
 #if debug
-			string pointPerim = "RECTSHAPE:";
-			foreach (RectEdge perimEdge in rectShape.Perimeter)
-			{
-				pointPerim += perimEdge.FirstPosition.xPos + "," + perimEdge.FirstPosition.yPos + "|";
-			}
+            string pointPerim = "RECTSHAPE:";
+            foreach (RectEdge perimEdge in rectShape.Perimeter)
+            {
+                pointPerim += perimEdge.FirstPosition.xPos + "," + perimEdge.FirstPosition.yPos + "|";
+            }
 
-			StringLog.Add(pointPerim);
+            StringLog.Add(pointPerim);
 #endif
-		}
+        }
 
-		internal static void RecordChordCut(RectEdge rectEdge)
-		{
+        internal static void RecordChordCut(RectEdge rectEdge)
+        {
 #if debug
-			string chordNote = "CHORDEDGE:";
-			chordNote += rectEdge.FirstPosition.xPos + "," + rectEdge.FirstPosition.yPos + "|";
-			chordNote += rectEdge.SecondPosition.xPos + "," + rectEdge.SecondPosition.yPos + "|";
+            string chordNote = "CHORDEDGE:";
+            chordNote += rectEdge.FirstPosition.xPos + "," + rectEdge.FirstPosition.yPos + "|";
+            chordNote += rectEdge.SecondPosition.xPos + "," + rectEdge.SecondPosition.yPos + "|";
 
-			StringLog.Add(chordNote);
+            StringLog.Add(chordNote);
 #endif
-		}
+        }
 
-		static public string PrintLog()
-		{
-			return string.Join(System.Environment.NewLine, StringLog);
-		}
+        public static string PrintLog()
+        {
+            return string.Join(System.Environment.NewLine, StringLog);
+        }
 
-		internal static void RecordHole(RectShape hole)
-		{
+        internal static void RecordHole(RectShape hole)
+        {
 #if debug
-			string pointPerim = "RECTHOLE:";
-			foreach (RectEdge perimEdge in hole.Perimeter)
-			{
-				pointPerim += perimEdge.FirstPosition.xPos + "," + perimEdge.FirstPosition.yPos + "|";
-			}
+            string pointPerim = "RECTHOLE:";
+            foreach (RectEdge perimEdge in hole.Perimeter)
+            {
+                pointPerim += perimEdge.FirstPosition.xPos + "," + perimEdge.FirstPosition.yPos + "|";
+            }
 
-			StringLog.Add(pointPerim);
+            StringLog.Add(pointPerim);
 #endif
-		}
-	}
+        }
+    }
 }

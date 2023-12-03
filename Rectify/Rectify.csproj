@@ -9,9 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Priority Queue">
-      <HintPath>..\..\..\High-Speed-Priority-Queue-for-C-Sharp\Priority Queue\bin\Debug\Priority Queue.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\..\High-Speed-Priority-Queue-for-C-Sharp\Priority Queue\Priority Queue.csproj" />
   </ItemGroup>
 
 </Project>

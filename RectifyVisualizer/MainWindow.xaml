@@ -1,0 +1,31 @@
+﻿<Window
+    x:Class="RectifyVisualizer.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:RectifyVisualizer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel
+            Width="270"
+            Height="399"
+            Margin="10,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+            <Canvas Name="InitialDataCanvas" Height="399" />
+        </StackPanel>
+        <StackPanel
+            Width="497"
+            Height="399"
+            Margin="285,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+            <Canvas Name="FinalDataCanvas" Height="399" />
+        </StackPanel>
+    </Grid>
+</Window>
