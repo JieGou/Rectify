@@ -157,17 +157,25 @@ namespace RectifyUtils
 
     public class Vertex
     {
+        /// <summary>
+        /// 设置为凸的
+        /// </summary>
         public void SetConvex()
         {
             this.IsConcave = false;
         }
-
+        /// <summary>
+        /// 设置为凹的
+        /// </summary>
         public void SetConcave()
         {
             this.IsConcave = true;
         }
 
         public Position VertPosition { get; private set; }
+        /// <summary>
+        /// 是否为凹的
+        /// </summary>
         public bool IsConcave { get; private set; }
 
         public bool IsConvex
@@ -226,9 +234,10 @@ namespace RectifyUtils
             return "Concave: " + IsConcave + " Vertex: " + VertPosition.ToString();
         }
     }
-
+    // <image url="$(ProjectDir)\DocumentImages\RectilinearPolygon.png"/>
     /// <summary>
-    /// A RectShape is a list of RectEdges
+    /// A RectShape is a list of RectEdges<para/>
+	/// 正交多边形 orthogonal polygon,rectilinear polygon
     /// </summary>
     public class RectShape
     {
@@ -236,7 +245,9 @@ namespace RectifyUtils
         {
             this.PathGroup = pathGroup;
         }
-
+        /// <summary>
+        /// 边集合
+        /// </summary>
         public List<RectEdge> Perimeter { get; set; } = new List<RectEdge>();
 
         private List<Vertex> _vertices = new List<Vertex>();
@@ -1207,6 +1218,9 @@ namespace RectifyUtils
     }
 
     [Serializable]
+    /// <summary>
+    /// An immutable type that holds 2 integer values
+    /// </summary>
     public class Position
     {
         public readonly int xPos;
